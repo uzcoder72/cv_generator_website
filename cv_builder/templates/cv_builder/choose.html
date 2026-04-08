@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose CV Template</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        .template-cards {
+            display: flex;
+            gap: 20px;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .card {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: 0.3s;
+            flex: 1;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            border-color: #4facfe;
+        }
+        .download-btn {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background: #4facfe;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+        }
+        .doc-btn {
+            background: #00f2fe;
+            color: #111;
+        }
+    </style>
+</head>
+<body>
+    <div class="glass-container" style="max-width: 1000px;">
+        <h1>Your Data Was Saved Successfully!</h1>
+        <p class="subtitle">Choose a design style below and pick whether to download as PDF or Word Doc.</p>
+        
+        <div class="template-cards">
+            <!-- Template 1: Minimalist -->
+            <div class="card">
+                <h2>1. Minimalist</h2>
+                <p>Clean, simple, and elegant.</p>
+                <a href="{% url 'generate_pdf' resume_id 1 %}" class="download-btn">📥 PDF</a>
+                <a href="{% url 'generate_doc' resume_id 1 %}" class="download-btn doc-btn">📝 Word</a>
+            </div>
+            
+            <!-- Template 2: Modern -->
+            <div class="card">
+                <h2>2. Modern</h2>
+                <p>Colorful and distinct sections.</p>
+                <a href="{% url 'generate_pdf' resume_id 2 %}" class="download-btn">📥 PDF</a>
+                <a href="{% url 'generate_doc' resume_id 2 %}" class="download-btn doc-btn">📝 Word</a>
+            </div>
+            
+            <!-- Template 3: Executive -->
+            <div class="card">
+                <h2>3. Executive</h2>
+                <p>Classic professional design.</p>
+                <a href="{% url 'generate_pdf' resume_id 3 %}" class="download-btn">📥 PDF</a>
+                <a href="{% url 'generate_doc' resume_id 3 %}" class="download-btn doc-btn">📝 Word</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

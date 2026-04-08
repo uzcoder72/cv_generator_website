@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Times New Roman', serif; margin: 40px; color: #000; line-height: 1.5; }
+        .header { text-align: left; border-bottom: 3px double #000; padding-bottom: 20px; margin-bottom: 30px; }
+        .header h1 { margin: 0; font-size: 36px; text-transform: uppercase; }
+        .subtitle { font-size: 20px; font-style: italic; color: #444; }
+        .contact { font-size: 14px; margin-top: 10px; }
+        .main-section { margin-bottom: 25px; }
+        .section-header { font-size: 18px; font-weight: bold; text-transform: uppercase; background-color: #f4f4f4; padding: 5px; margin-bottom: 15px; border-left: 5px solid #000; }
+        .entry { margin-bottom: 15px; margin-left: 10px; }
+        .entry-title { font-weight: bold; font-size: 16px; }
+        .entry-meta { font-style: italic; font-size: 14px; color: #555; }
+        table { width: 100%; border-collapse: collapse; }
+        td { vertical-align: top; }
+        .td-left { width: 70%; }
+        .td-right { width: 30%; text-align: right; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>{{ resume.surname }}, {{ resume.name }}</h1>
+        <div class="subtitle">{{ resume.specialization }}</div>
+        <div class="contact">
+            {{ resume.email }} • {{ resume.contacts }} • {{ resume.social_media }}
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="section-header">Professional Experience</div>
+        <div class="entry">
+            <table>
+                <tr>
+                    <td class="td-left"><span class="entry-title">{{ resume.exp_position }}</span>, {{ resume.exp_employer }}</td>
+                    <td class="td-right entry-meta">{{ resume.exp_start }} – {{ resume.exp_end }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="section-header">Education</div>
+        <div class="entry">
+            <table>
+                <tr>
+                    <td class="td-left"><span class="entry-title">{{ resume.edu_degree }}</span>, {{ resume.edu_institution }}</td>
+                    <td class="td-right entry-meta">{{ resume.edu_start }} – {{ resume.edu_end }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="main-section">
+        <div class="section-header">Core Competencies & Languages</div>
+        <div class="entry">
+            <p><strong>Expertise:</strong> {{ resume.skills }}</p>
+            <p><strong>Languages:</strong> {{ resume.languages }}</p>
+        </div>
+    </div>
+
+    {% if resume.extra_info %}
+    <div class="main-section">
+        <div class="section-header">Additional Details</div>
+        <div class="entry">
+            <p>{{ resume.extra_info }}</p>
+        </div>
+    </div>
+    {% endif %}
+</body>
+</html>

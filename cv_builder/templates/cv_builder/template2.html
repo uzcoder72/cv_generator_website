@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        @page {
+            size: a4 portrait;
+            margin: 2cm;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            color: #333;
+            font-size: 11pt;
+            line-height: 1.4;
+        }
+        .header-name {
+            font-size: 36pt;
+            font-weight: bold;
+            color: #0b2f6b;
+            margin-bottom: 0px;
+        }
+        .header-title {
+            font-size: 18pt;
+            color: #3b82f6;
+            margin-top: 0px;
+            margin-bottom: 10px;
+        }
+        .contact-info {
+            font-size: 10pt;
+            color: #444;
+            margin-bottom: 30px;
+            font-weight: bold;
+        }
+        .section-header {
+            color: #0b2f6b;
+            font-size: 16pt;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-bottom: 2px solid #0b2f6b;
+            padding-bottom: 4px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        table.layout {
+            width: 100%;
+        }
+        td.left-col {
+            width: 60%;
+            vertical-align: top;
+            padding-right: 25px;
+        }
+        td.right-col {
+            width: 40%;
+            vertical-align: top;
+        }
+        .job-title {
+            color: #0b2f6b;
+            font-size: 14pt;
+            font-weight: 500;
+        }
+        .school-name {
+            color: #0b2f6b;
+            font-size: 13pt;
+            font-weight: 500;
+        }
+        .sub-text {
+            color: #3b82f6;
+            font-weight: bold;
+            font-size: 10pt;
+            margin-bottom: 3px;
+        }
+        .date-text {
+            font-size: 9pt;
+            color: #777;
+            margin-bottom: 5px;
+        }
+        .normal-text {
+            font-size: 10pt;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <!-- Top Header -->
+    <table class="layout" border="0" cellpadding="0" cellspacing="0" style="margin-bottom: 10px;">
+        <tr>
+            <td style="width: 75%; vertical-align: bottom;">
+                <div class="header-name">{{ resume.name }} {{ resume.surname }}</div>
+                <div class="header-title">{{ resume.specialization }}</div>
+            </td>
+            <td style="width: 25%; text-align: right; vertical-align: top;">
+                {% if resume.photo %}
+                    <img src="{{ resume.photo.path }}" style="width: 110px; height: 110px; border-radius: 55px;">
+                {% endif %}
+            </td>
+        </tr>
+    </table>
+    
+    <div class="contact-info">
+        {{ resume.contacts }} &nbsp; &nbsp; {{ resume.email }} &nbsp; &nbsp; {{ resume.social_media }}
+    </div>
+
+    <!-- Main Two-Column Layout for xhtml2pdf -->
+    <table class="layout" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <!-- Left Column -->
+            <td class="left-col">
+                {% if resume.extra_info %}
+                <div class="section-header">Summary</div>
+                <div class="normal-text">{{ resume.extra_info }}</div>
+                {% endif %}
+
+                <div class="section-header">Experience</div>
+                <div class="job-title">{{ resume.exp_position }}</div>
+                <div class="sub-text">{{ resume.exp_employer }}</div>
+                <div class="date-text">📅 {{ resume.exp_start }} to {{ resume.exp_end }}</div>
+                <div class="normal-text" style="margin-top: 10px;">
+                    <ul>
+                        <li>Successfully managed projects and delivered key outcomes in my role as {{ resume.exp_position }}.</li>
+                        <li>Built strong relationships and consistently drove value for {{ resume.exp_employer }}.</li>
+                    </ul>
+                </div>
+            </td>
+            
+            <!-- Right Column -->
+            <td class="right-col">
+                <div class="section-header" style="margin-top: 0;">Education</div>
+                <div class="school-name">{{ resume.edu_degree }}</div>
+                <div class="sub-text">{{ resume.edu_institution }}</div>
+                <div class="date-text">📅 {{ resume.edu_start }} to {{ resume.edu_end }}</div>
+
+                <div class="section-header">Skills</div>
+                <div class="normal-text" style="line-height: 2;">
+                    <!-- Replacing commas with clean formatting -->
+                    <strong>{{ resume.skills|title }}</strong>
+                </div>
+
+                <div class="section-header">Languages</div>
+                <div class="normal-text">
+                    <strong>{{ resume.languages|title }}</strong>
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

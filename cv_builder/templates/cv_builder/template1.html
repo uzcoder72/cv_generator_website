@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body { font-family: 'Helvetica', sans-serif; color: #333; line-height: 1.6; }
+        .header { text-align: center; border-bottom: 2px solid #333; padding-bottom: 20px; margin-bottom: 20px; }
+        .header h1 { margin: 0; font-size: 32px; letter-spacing: 2px; }
+        .header p { margin: 5px 0; color: #666; }
+        .section-title { font-size: 20px; text-transform: uppercase; border-bottom: 1px solid #ccc; margin-top: 30px; margin-bottom: 15px; padding-bottom: 5px; color: #111; }
+        .item { margin-bottom: 15px; }
+        .item strong { display: block; font-size: 16px; }
+        .item span { color: #555; font-size: 14px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        {% if resume.photo %}
+            <div style="margin-bottom: 15px;">
+                <img src="{{ resume.photo.path }}" style="width: 130px; height: 130px; border-radius: 65px; object-fit: cover;">
+            </div>
+        {% endif %}
+        <h1>{{ resume.name|upper }} {{ resume.surname|upper }}</h1>
+        <p>{{ resume.specialization }}</p>
+        <p>{{ resume.email }} | {{ resume.contacts }} | {{ resume.social_media }}</p>
+    </div>
+
+    <!-- Education Section -->
+    <div class="section-title">Education</div>
+    <div class="item">
+        <strong>{{ resume.edu_degree }} - {{ resume.edu_institution }}</strong>
+        <span>📅 {{ resume.edu_start }} to {{ resume.edu_end }}</span>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="section-title">Experience</div>
+    <div class="item">
+        <strong>{{ resume.exp_position }} at {{ resume.exp_employer }}</strong>
+        <span>📅 {{ resume.exp_start }} to {{ resume.exp_end }}</span>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section-title">Skills & Languages</div>
+    <div class="item">
+        <p><strong>Skills:</strong> {{ resume.skills }}</p>
+        <p><strong>Languages:</strong> {{ resume.languages }}</p>
+    </div>
+
+    {% if resume.extra_info %}
+    <!-- Extra Info -->
+    <div class="section-title">Additional Info</div>
+    <div class="item">
+        <p>{{ resume.extra_info }}</p>
+    </div>
+    {% endif %}
+</body>
+</html>

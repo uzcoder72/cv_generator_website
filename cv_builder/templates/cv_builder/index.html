@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Generator Pro</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <div class="glass-container">
+        <h1>Create Your Professional CV</h1>
+        <p class="subtitle">Fill out the information below to securely generate your perfect resume.</p>
+        
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="form-grid">
+                {% for field in form %}
+                <div class="form-group" id="group-{{ field.name }}">
+                    <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                    {{ field }}
+                    {% if field.errors %}
+                        <div style="color: #ff4d4d; font-size: 0.8rem; margin-top: 5px;">{{ field.errors.0 }}</div>
+                    {% endif %}
+                    {% if field.help_text %}
+                        <small class="help-text">{{ field.help_text }}</small>
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="btn-container">
+                <button type="submit" class="glow-on-hover">Next: Choose Template</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

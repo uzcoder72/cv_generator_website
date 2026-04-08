@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    /* Premium background gradient */
+    background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 0;
+}
+
+/* Glassmorphism Effect */
+.glass-container {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 40px;
+    width: 80%;
+    max-width: 900px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.subtitle {
+    text-align: center;
+    color: #ccc;
+    margin-bottom: 40px;
+    font-weight: 300;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+/* Ensuring text areas and photos span across both columns */
+#group-skills, #group-extra_info, #group-photo {
+    grid-column: 1 / -1;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    color: #eee;
+    font-weight: 400;
+}
+
+/* Modern inputs */
+.input-field {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    padding: 12px 15px;
+    border-radius: 8px;
+    color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* When the user clicks the input field */
+.input-field:focus {
+    outline: none;
+    border-color: #4facfe;
+    box-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+    background: rgba(0, 0, 0, 0.4);
+}
+
+textarea.input-field {
+    min-height: 100px;
+    resize: vertical;
+}
+
+.help-text {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-top: 5px;
+}
+
+.btn-container {
+    text-align: center;
+    margin-top: 30px;
+}
+
+/* Eye catching button hover micro-animation */
+.glow-on-hover {
+    width: 250px;
+    height: 50px;
+    border: none;
+    outline: none;
+    color: #fff;
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    cursor: pointer;
+    border-radius: 25px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.glow-on-hover:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 242, 254, 0.5);
+}
